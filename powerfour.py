@@ -58,3 +58,31 @@ def play_game():
     print("Bienvenue dans Puissance 4 !")
     print_board(board)
 
+    while True:
+        player = players[turn % 2]
+        print(f"Joueur {player}, à vous de jouer !")
+        try:
+            col = int(input("Choisissez une colonne (1-7) : ")) - 1
+            if not is_valid_move(board, col):
+                print("Coup invalide. Essayez encore.")
+                continue
+        except ValueError:
+            print("Entrée invalide. Entrez un numéro de colonne.")
+            continue
+
+        make_move(board, col, player)
+        print_board(board)
+
+        if check_win(board, player):
+            print(f"Félicitations, joueur {player} a gagné !")
+            break
+
+        if is_board_full(board):
+            print("La partie est un match nul !")
+            break
+
+        turn += 1
+
+
+if __name__ == "__main__":
+    play_game()
