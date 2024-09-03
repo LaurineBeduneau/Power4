@@ -48,3 +48,13 @@ def check_win(board, player):
 
 def is_board_full(board):
     return all(cell != " " for row in board for cell in row)
+
+def play_game():
+    rows, cols = 6, 7
+    board = create_board(rows, cols)
+    players = ["X", "O"]
+    turn = 0
+
+    print("Bienvenue dans Puissance 4 !")
+    print_board(board)
+
